@@ -3,13 +3,13 @@
 command -v nvim &>/dev/null && exit 0
 [[ "$(uname -s)" == "Darwin" ]] && exit 0
 
-# Ensure git and curl are present
+# Ensure git, curl, and tree-sitter build deps are present
 if command -v apt-get &>/dev/null; then
-    sudo apt-get update -qq && sudo apt-get install -y git curl
+    sudo apt-get update -qq && sudo apt-get install -y git curl gcc make g++
 elif command -v dnf &>/dev/null; then
-    sudo dnf install -y git curl
+    sudo dnf install -y git curl gcc make gcc-c++
 elif command -v yum &>/dev/null; then
-    sudo yum install -y git curl
+    sudo yum install -y git curl gcc make gcc-c++
 fi
 
 ARCH=$(uname -m)
