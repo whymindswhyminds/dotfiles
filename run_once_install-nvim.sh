@@ -33,6 +33,11 @@ if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
     sudo ln -sf "$(which fdfind)" /usr/local/bin/fd
 fi
 
+# ── tree-sitter CLI (required by nvim 0.12+ to build parsers) ───────────────
+if ! command -v tree-sitter &>/dev/null; then
+    npm install -g tree-sitter-cli
+fi
+
 # ── Python debug adapter (nvim-dap) ─────────────────────────────────────────
 pip3 install --quiet debugpy 2>/dev/null || true
 
